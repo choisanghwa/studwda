@@ -6,6 +6,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 class JFGame extends JFrame{
+	JCheck check1;
 	ImageIcon bgimg;
 	JButton start1,rank1;
 	JTextField name;
@@ -94,7 +95,6 @@ class gamestart implements ActionListener{
 			return1 = new JButton("돌아가기");
 			gamest.add(return1);
 			return1.addActionListener(new returngo());
-			return1.addActionListener(new okcheck());
 		
 			add(gamest);
 			gamest.setVisible(true);
@@ -117,13 +117,12 @@ class gamestart implements ActionListener{
 	class okcheck implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if(JCheck.i== 0) {
-				new JCheck();
-			}
-			else 
-				System.exit(0);
+			check1 = new JCheck();
+			 
+				
 		}
 	}
+	
 	//돌아가기 액션
 	class returngo implements  ActionListener{
 
@@ -131,7 +130,8 @@ class gamestart implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 					gamest.setVisible(false);
 					main1.setVisible(true);
-					
+					//돌아가기를 누르면 다른 창이 다 닫히며 메인으로 간다.
+					check1.dispose();
 			}
 	}
 }
