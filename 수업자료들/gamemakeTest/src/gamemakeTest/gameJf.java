@@ -148,6 +148,7 @@ class gamestart implements ActionListener{
 					//돌아가기를 누를때 무게재기 창이 떠있으면 닫는다.
 					if(a > 0){
 					check1.dispose();
+					a=0;
 					}
 			}
 	}
