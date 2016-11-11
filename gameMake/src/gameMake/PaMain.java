@@ -5,13 +5,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class JPanel01 extends JPanel {
+public class PaMain extends JPanel {
 	ImageIcon bgimg;
 	JButton start1,rank1;
 	JTextField name;
-	public JPanel02 games;
+	PaMain main2 = this;
+	public PaGam games;
 	
-	public JPanel01(){
+	public PaMain(JFGame gmmain){
+
 		name = new JTextField(10);
 		
 		add(name);
@@ -23,8 +25,10 @@ public class JPanel01 extends JPanel {
 				if (e.getSource() == start1){
 					
 					setVisible(false);
-					games = new JPanel02();
-					add(games);
+					games = new PaGam(gmmain);
+					//JFrame을 불러와 불러온곳에 games를 add하기
+					gmmain.add(games);
+					games.setVisible(true);
 				}
 			}
 		});

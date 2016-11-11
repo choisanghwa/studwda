@@ -1,13 +1,16 @@
 package gameMake;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
-public class JPanel02 extends JPanel{
+public class PaGam extends JPanel{
 	JLabel text001,count1,rest;
 	JCheckBox stones1,stones2,stones3,stones4,stones5,stones6;
 	JButton gogo,dab,return1;
 
-	public JPanel02(){
+	public PaGam(JFGame gmmain){
 		
 		text001 =new JLabel("6개의 돌중 무게가 다른 돌 하나를 찾아라");
 		add(text001);
@@ -31,18 +34,40 @@ public class JPanel02 extends JPanel{
 	
 		//무게재기를 누르면 무게재기 새창이 뜬다.
 		gogo = new JButton("무게재기");
+		gogo.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+					if (arg0.getSource() == gogo){
+						Jcheck check1 = new Jcheck();
+				}
+				
+			}
+			
+		});
 		add(gogo);
-		//gogo.addActionListener(new okcheck());
-
 		//정답맞추기를 누르면  답맞추기 창으로 이동한다.
 		dab = new JButton("정답맞추기");		
 		add(dab);
 		
 		//돌아가기 버튼, 누르면 메인Frame으로 돌아간다
 		return1 = new JButton("돌아가기");
+		return1.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if (arg0.getSource() == return1){
+					removeAll();
+					PaMain main = new PaMain(gmmain);
+			}
+				
+			}
+
+			private void removeAll() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		add(return1);
-		//return1.addActionListener(new returngo());
-		
 		}
 }
 
