@@ -9,29 +9,32 @@ import javax.swing.*;
 public class PaMain extends JPanel {
 	ImageIcon bgimg;
 	JButton start1,rank1;
-	JTextField name;
+	final JTextField name;
 	public PaMain main2 = this;
 	public PaGam games;
+	String name1= null;
+
 	
 	public PaMain(JFGame gmmain){
-		 bgimg = new ImageIcon("../gameMake/img/main1-1.jpg");
+		//메인이미지 
+		bgimg = new ImageIcon("../gameMake/img/main1-1.jpg");
 		 
 		name = new JTextField(10);
-		
 		add(name);
+		//이름 입력
 		
 		start1 = new JButton("gamestart");			
 		start1.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (e.getSource() == start1){
-					
+				name1 = name.getText();
+				//이름의 길이로 이름을 입력했는지 안했는지 확인한다.
+				if (e.getSource() == start1 && name1.length() !=0){							
 					setVisible(false);
-					games = new PaGam(main2,gmmain);
+					games = new PaGam(main2,gmmain, name1);
 					//JFrame을 불러와 불러온곳에 games를 add하기
 					gmmain.add(games);
 					games.setVisible(true);
-					
 				}
 			}
 		});
@@ -53,11 +56,11 @@ public class PaMain extends JPanel {
 		
 	}
 
-	@Override
-	public void paintComponent(Graphics g) {
-		g.drawImage(bgimg.getImage(), 0, 0, null);
-		setOpaque(false);
-		super.paintComponent(g);
-	}
+//	@Override
+//	public void paintComponent(Graphics g) {
+//		g.drawImage(bgimg.getImage(), 0, 0, null);
+//		setOpaque(false);
+//		super.paintComponent(g);
+//	}
 
 }

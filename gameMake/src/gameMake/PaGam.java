@@ -2,6 +2,7 @@ package gameMake;
 
 
 
+import java.awt.Graphics;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,17 +12,20 @@ import javax.swing.*;
 public class PaGam extends JPanel{
 	ImageIcon bgimg2;
 	Jcheck check1;
-	JLabel text001,count1,rest;
+	JLabel text001,count1,rest,names;
 	JCheckBox stones1,stones2,stones3,stones4,stones5,stones6;
 	JButton weight,dab,return1;
 	int wei_count= 0;
 	Pasolu solution;
-	public PaGam(PaMain main2, JFGame gmmain){
-		
-		text001 =new JLabel("6개의 돌중 무게가 다른 돌 하나를 찾아라");
-		add(text001);
+	public PaGam(PaMain main2, JFGame gmmain, String name1){
+		//메인이미지
+		bgimg2 = new ImageIcon("../gameMake/img/Gameimg.jpg");
 	
-		rest = new JLabel("재시작 횟수 : ");
+		//재시작횟수
+		names =new JLabel(name1+"의 현재 횟수는");
+		add(names);
+		
+		rest = new JLabel();
 		add(rest);
 	
 		stones1 = new JCheckBox("a");
@@ -38,7 +42,7 @@ public class PaGam extends JPanel{
 		add(stones6);
 		
 		//무게 카운터 나타내는 라벨
-		count1 =new JLabel("현재 무게 잰 횟수");
+		count1 =new JLabel();
 		add(count1);
 		
 		//무게재기를 누르면 무게재기 새창이 뜬다.
@@ -63,9 +67,11 @@ public class PaGam extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent da) {
 				if(da.getSource() == dab){
+					setVisible(false);
 					removeAll();
-					solution = new Pasolu();
-					
+					solution = new Pasolu(main2,gmmain);
+					gmmain.add(solution);
+					solution.setVisible(true);
 				}
 				
 			}
@@ -90,5 +96,12 @@ public class PaGam extends JPanel{
 		});
 		add(return1);
 		}
+	
+	/*@Override
+	public void paintComponent(Graphics g2) {
+		g2.drawImage(bgimg2.getImage(), 0, 0, null);
+		setOpaque(false);
+		super.paintComponent(g2);
+	}*/
 }
 
