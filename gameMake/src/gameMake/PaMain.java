@@ -12,8 +12,8 @@ public class PaMain extends JPanel {
 	final JTextField name;
 	public PaMain main2 = this;
 	public PaGam games;
-	String name1= null;
-
+	String name2= null;
+	setgetclass name1 = new setgetclass();
 	
 	public PaMain(JFGame gmmain){
 		//메인이미지 
@@ -27,11 +27,15 @@ public class PaMain extends JPanel {
 		start1.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				name1 = name.getText();
+			//	name1 = name.getText();
+				name1.setNamse(name.getText());
+				name2= name1.getNamse();
 				//이름의 길이로 이름을 입력했는지 안했는지 확인한다.
-				if (e.getSource() == start1 && name1.length() !=0){							
+				//if(e.getSource() == start1){
+				if (e.getSource() == start1 && name2.length() !=0){							
 					setVisible(false);
-					games = new PaGam(main2,gmmain, name1);
+					
+					games = new PaGam(main2,gmmain,name1);
 					//JFrame을 불러와 불러온곳에 games를 add하기
 					gmmain.add(games);
 					games.setVisible(true);
