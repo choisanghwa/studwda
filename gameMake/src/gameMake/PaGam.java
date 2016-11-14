@@ -268,7 +268,7 @@ public class PaGam extends JPanel{
 								number[3]*number[4] !=0 || number[3]*number[4] !=0 || number[3]*number[5] !=0 ||
 								number[4]*number[5] !=0){
 						wei_count++;
-						check1 = new Jcheck();
+						check1 = new Jcheck(number,chlab2);
 						}
 				}
 				
@@ -288,7 +288,7 @@ public class PaGam extends JPanel{
 			public void actionPerformed(ActionEvent da) {
 				if(da.getSource() == dab){
 					setVisible(false);
-					removeAll();
+					//removeAll();
 					solution = new Pasolu(main2,gmmain);
 					gmmain.add(solution);
 					solution.setVisible(true);
