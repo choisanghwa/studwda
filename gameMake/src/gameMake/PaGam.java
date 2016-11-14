@@ -12,7 +12,9 @@ import java.awt.event.ItemListener;
 import javax.swing.*;
 
 public class PaGam extends JPanel{
+	
 	final static int nem =6;	
+	boolean[] click = {true,true,true,true,true,true} ;
 	ImageIcon bgimg2;
 	Jcheck check1;
 	JLabel text001,count1,rest,names;
@@ -32,11 +34,10 @@ public class PaGam extends JPanel{
 		for(int i=0;i<num.length;i++){
 			if(i!=2){
 				num[i]=10;
-				num[2]=(int)(Math.random()*10)+20;
 			}else{
-				num[i]=(int)(Math.random()*10)+20;
+				num[i]=(int)(Math.random()*11)+2;
 					if(num[i] == num[0]){
-						num[i]=(int)(Math.random()*10)+20;
+						num[i]=(int)(Math.random()*11);
 						
 					}
 				 }
@@ -45,8 +46,9 @@ public class PaGam extends JPanel{
 		
 		renum = shuffle(num);
 		for(int i=0;i<num.length;i++){
-			System.out.println(num[i]);
+			System.out.println(renum[i]+"확인");
 		}
+		System.out.println("\n");
 		//메인이미지
 		bgimg2 = new ImageIcon("../gameMake/img/Gameimg.jpg");
 	
@@ -65,35 +67,206 @@ public class PaGam extends JPanel{
 
 		for(int i=0;i<stones.length;i++){
 			stones[i] = new JCheckBox(labels[i]);
-			stones[i].addActionListener(new ActionListener() {
+			/*stones[i].addActionListener(new ActionListener() {
 				
 				@Override
-				public void actionPerformed(ActionEvent chi) {
-					for(int j =0;j<stones.length;j++){
-					if(chi.getSource() == stones[j]){
+				public void actionPerformed(ActionEvent e) {			
+					for(int j =0; j<stones.length;j++){
+					if(click[j] == true && e.getSource() == stones[j]){
 						number[j] = num[j];
 						chlab2[j] = labels[j];
+						if(e.getSource() == stones[j]){
+						click[j]= false;
 						
+						}
+					}else{
+						number[j] =0;
+						chlab2[j] = null;
+						if(e.getSource() == stones[j]){
+							click[j]= true;
+							
+							}
 					}
-					}
-					for(int k=0;k<6;k++){
-						System.out.println(number[k]);
-						System.out.println(chlab2[k]);
+					
+					System.out.println(number[j]+" "+j+"꺼");
+					System.out.println(chlab2[j]+" "+j+"글");
+				}
+					System.out.println("\n");
+				}
+				
+			});*/
+			
+			
+			add(stones[i]);
+		
+		
+		}
+	
+					//1번째
+					stones[0].addActionListener(new ActionListener() {
 						
+						@Override
+						public void actionPerformed(ActionEvent e) {			
+							
+							if(click[0] == true && e.getSource() == stones[0]){
+								number[0] = num[0];
+								chlab2[0] = labels[0];
+								if(e.getSource() == stones[0]){
+								click[0]= false;
+								
+								}
+							}else{
+								number[0] =0;
+								chlab2[0] = null;
+								if(e.getSource() == stones[0]){
+									click[0]= true;
+									
+									}
+							}
+							
+							System.out.println(number[0]);
+							System.out.println(chlab2[0]);
+						}
+					});
+					//2번째
+					stones[1].addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {			
+							
+							if(click[1] == true && e.getSource() == stones[1]){
+								number[1] = num[1];
+								chlab2[1] = labels[1];
+								if(e.getSource() == stones[1]){
+									click[1]= false;
+								
+								}
+							}else{
+								number[1] =0;
+								chlab2[1] = null;
+								if(e.getSource() == stones[1]){
+									click[1]= true;
+									
+									}
+							}						
+							System.out.println(number[1]);
+							System.out.println(chlab2[1]);
+						}
+					});
+				//3번째
+					stones[2].addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {			
+					
+					if(click[2] == true && e.getSource() == stones[2]){
+						number[2] = num[2];
+						chlab2[2] = labels[2];
+						if(e.getSource() == stones[2]){
+							click[2]= false;
+						
+						}
+					}else{
+						number[2] =0;
+						chlab2[2] = null;
+						if(e.getSource() == stones[2]){
+							click[2]= true;
+							
+							}
 					}
+					System.out.println(number[2]);
+					System.out.println(chlab2[2]);
 				}
 			});
-			add(stones[i]);
-		}
-
-		
+			//4번째
+			stones[3].addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {			
+				
+					if(click[3] == true && e.getSource() == stones[3]){
+						number[3] = num[3];
+						chlab2[3] = labels[3];
+						if(e.getSource() == stones[3]){
+							click[3]= false;
+						
+						}
+					}else{
+						number[3] =0;
+						chlab2[3] = null;
+						if(e.getSource() == stones[3]){
+							click[3]= true;
+							
+							}
+					}
+					System.out.println(number[3]);
+					System.out.println(chlab2[3]);
+				}
+			});
+			
+			//5번째
+			stones[4].addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {			
+					
+					if(click[4] == true && e.getSource() == stones[4]){
+						number[4] = num[4];
+						chlab2[4] = labels[4];
+						if(e.getSource() == stones[4]){
+							click[4]= false;
+						
+						}
+					}else{
+						number[4] =0;
+						chlab2[4] = null;
+						if(e.getSource() == stones[4]){
+							click[4]= true;
+							
+							}
+					}
+					System.out.println(number[4]);
+					System.out.println(chlab2[4]);
+				}
+			});
+			//6번째
+			stones[5].addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {			
+					
+					if(click[5] == true && e.getSource() == stones[5]){
+						number[5] = num[5];
+						chlab2[5] = labels[5];
+						if(e.getSource() == stones[5]){
+							click[5]= false;
+						
+						}
+					}else{
+						number[5] =0;
+						chlab2[5] = null;
+						if(e.getSource() == stones[5]){
+							click[5]= true;
+							
+							}
+					}
+					System.out.println(number[5]);
+					System.out.println(chlab2[5]);
+				}
+			});
+							
 		//무게재기를 누르면 무게재기 새창이 뜬다.
 		weight = new JButton("무게재기");
 		weight.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 					if (wei_count < 3 &&  arg0.getSource() == weight){						
-						if(number[0] !=0 || number[1] !=0 || number[2] !=0 || number[3] !=0 || number[4] !=0 || number[5] !=0){
+						if(number[0]*number[1] !=0 ||number[0]*number[2] !=0 ||number[0]*number[3] !=0 ||number[0]*number[4] !=0
+								|| number[0]*number[5] !=0 ||
+								number[1]*number[2] !=0 ||number[1]*number[3] !=0 ||number[1]*number[4] !=0 ||number[1]*number[5] !=0
+								|| number[2]*number[3] !=0|| number[2]*number[4] !=0|| number[2]*number[5] !=0 ||
+								number[3]*number[4] !=0 || number[3]*number[4] !=0 || number[3]*number[5] !=0 ||
+								number[4]*number[5] !=0){
 						wei_count++;
 						check1 = new Jcheck();
 						}
@@ -132,7 +305,8 @@ public class PaGam extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (arg0.getSource() == return1){
-					removeAll();
+					//removeAll();
+					setVisible(false);
 					if(wei_count !=0){
 						check1.dispose();
 					}
