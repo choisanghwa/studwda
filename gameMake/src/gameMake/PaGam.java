@@ -124,8 +124,8 @@ public class PaGam extends JPanel{
 									}
 							}
 							
-							System.out.println(number[0]);
-							System.out.println(chlab2[0]);
+							System.out.println(number[0]+"1번");
+							System.out.println(chlab2[0]+"1번");
 						}
 					});
 					//2번째
@@ -149,8 +149,8 @@ public class PaGam extends JPanel{
 									
 									}
 							}						
-							System.out.println(number[1]);
-							System.out.println(chlab2[1]);
+							System.out.println(number[1]+"2번");
+							System.out.println(chlab2[1]+"2번");
 						}
 					});
 				//3번째
@@ -174,8 +174,8 @@ public class PaGam extends JPanel{
 							
 							}
 					}
-					System.out.println(number[2]);
-					System.out.println(chlab2[2]);
+					System.out.println(number[2]+"3번");
+					System.out.println(chlab2[2]+"3번");
 				}
 			});
 			//4번째
@@ -199,8 +199,8 @@ public class PaGam extends JPanel{
 							
 							}
 					}
-					System.out.println(number[3]);
-					System.out.println(chlab2[3]);
+					System.out.println(number[3]+"4번");
+					System.out.println(chlab2[3]+"4번");
 				}
 			});
 			
@@ -225,8 +225,8 @@ public class PaGam extends JPanel{
 							
 							}
 					}
-					System.out.println(number[4]);
-					System.out.println(chlab2[4]);
+					System.out.println(number[4]+"5번");
+					System.out.println(chlab2[4]+"5번");
 				}
 			});
 			//6번째
@@ -250,8 +250,8 @@ public class PaGam extends JPanel{
 							
 							}
 					}
-					System.out.println(number[5]);
-					System.out.println(chlab2[5]);
+					System.out.println(number[5]+"6번");
+					System.out.println(chlab2[5]+"6번");
 				}
 			});
 							
@@ -313,6 +313,7 @@ public class PaGam extends JPanel{
 					main2.setVisible(true);
 					for(int i=0;i<number.length;i++){
 						number[i] = 0;
+						chlab2[i] = null;
 					}
 				}
 				
