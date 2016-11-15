@@ -8,46 +8,44 @@ import java.awt.event.KeyListener;
 import javax.swing.*;
 
 public class Pasolu extends JPanel{
-	public JTextField solu;
-			String	 qmun= null;
-	
+	public	 JTextField solu;
+	 public String	 qmun= null;
+	public JFgoodss goods;
 		public Pasolu(PaMain main2, JFGame gmmain, setgetclass name1, String falsenum){
 		
 			JTextField solu = new JTextField(10);
+			add(solu);
+			solu.addKeyListener(new KeyListener() {
 			
-			//키 입력 액션
-			solu.addKeyListener(new KeyListener() {	
 				@Override
-				public void keyTyped(KeyEvent e) {
-					//qmun에 필드값을 넣는다.
-					qmun = solu.getText();
-					if(e.getKeyCode() == e.VK_ENTER){
-							if(qmun.equals(falsenum)){
-								System.out.println("정답");
-							}else{
-								System.out.println("틀림");
-							}
-						
-					}
-				}
+				public void keyTyped(KeyEvent e) {}
 				
 				@Override
-				public void keyReleased(KeyEvent e) {
-					// TODO Auto-generated method stub
-					
-				}
+				public void keyReleased(KeyEvent e) {}
 				
 				@Override
 				public void keyPressed(KeyEvent e) {
-					// TODO Auto-generated method stub
+					qmun = solu.getText();
+					if(qmun.length()!= 0 && e.getKeyCode() == e.VK_ENTER){
+						System.out.println(qmun);
+						
+						if(qmun.equals(falsenum)){
+							name1.setCki(1);
+							goods = new JFgoodss(name1,falsenum);
+							
+							System.out.println("정답");
+						}else{
+							System.out.println("아니다");
+						}
+					}
+					
+					
 					
 				}
 			});
+
 			
-			
-			
-			add(solu);
 		
-		
+			
 	}
 }
