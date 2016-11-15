@@ -31,7 +31,7 @@ public class PaMain extends JPanel {
 				name1.setNamse(name.getText());
 				name2= name1.getNamse();
 				//이름의 길이로 이름을 입력했는지 안했는지 확인한다.
-				//if(e.getSource() == start1){
+				
 				if (e.getSource() == start1 && name2.length() !=0){							
 					setVisible(false);
 					
@@ -60,11 +60,11 @@ public class PaMain extends JPanel {
 		
 	}
 
-//	@Override
-//	public void paintComponent(Graphics g) {
-//		g.drawImage(bgimg.getImage(), 0, 0, null);
-//		setOpaque(false);
-//		super.paintComponent(g);
-//	}
+	@Override
+	public void paintComponent(Graphics g) {
+		g.drawImage(bgimg.getImage(), 0, 0, null);
+		setOpaque(false);
+		super.paintComponent(g);
+	}
 
 }

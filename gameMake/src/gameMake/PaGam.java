@@ -28,7 +28,9 @@ public class PaGam extends JPanel{
 	String[] labels = {"A","B","C","D","E","F"};
 	String[] chlab2 = new String[nem];
  	int[] number= new int[nem];
-	
+ 	String falsenum=null; //답 저장
+ 	
+ 	
 	public PaGam(PaMain main2, JFGame gmmain, setgetclass name1){
 		num = new int[nem];
 		for(int i=0;i<num.length;i++){
@@ -61,7 +63,7 @@ public class PaGam extends JPanel{
 		
 		
 		//무게 카운터 나타내는 라벨
-		count1 =new JLabel();
+		count1 =new JLabel(name1.getCounts()+"번째");
 		add(count1);
 		
 
@@ -101,160 +103,169 @@ public class PaGam extends JPanel{
 		
 		
 		}
-	
-					//1번째
-					stones[0].addActionListener(new ActionListener() {
-						
-						@Override
-						public void actionPerformed(ActionEvent e) {			
-							
-							if(click[0] == true && e.getSource() == stones[0]){
-								number[0] = num[0];
-								chlab2[0] = labels[0];
-								if(e.getSource() == stones[0]){
-								click[0]= false;
-								
-								}
-							}else{
-								number[0] =0;
-								chlab2[0] = null;
-								if(e.getSource() == stones[0]){
-									click[0]= true;
+//여기서 부터==============
+										//1번째
+										stones[0].addActionListener(new ActionListener() {
+											
+											@Override
+											public void actionPerformed(ActionEvent e) {			
+												
+												if(click[0] == true && e.getSource() == stones[0]){
+													number[0] = renum[0];
+													chlab2[0] = labels[0];
+													if(e.getSource() == stones[0]){
+													click[0]= false;
+													
+													}
+												}else{
+													number[0] =0;
+													chlab2[0] = null;
+													if(e.getSource() == stones[0]){
+														click[0]= true;
+														
+														}
+												}
+												
+												System.out.println(number[0]+"1번");
+												System.out.println(chlab2[0]+"1번");
+											}
+										});
+										//2번째
+										stones[1].addActionListener(new ActionListener() {
+											
+											@Override
+											public void actionPerformed(ActionEvent e) {			
+												
+												if(click[1] == true && e.getSource() == stones[1]){
+													number[1] = renum[1];
+													chlab2[1] = labels[1];
+													if(e.getSource() == stones[1]){
+														click[1]= false;
+													
+													}
+												}else{
+													number[1] =0;
+													chlab2[1] = null;
+													if(e.getSource() == stones[1]){
+														click[1]= true;
+														
+														}
+												}						
+												System.out.println(number[1]+"2번");
+												System.out.println(chlab2[1]+"2번");
+											}
+										});
+									//3번째
+										stones[2].addActionListener(new ActionListener() {
 									
+									@Override
+									public void actionPerformed(ActionEvent e) {			
+										
+										if(click[2] == true && e.getSource() == stones[2]){
+											number[2] = renum[2];
+											chlab2[2] = labels[2];
+											if(e.getSource() == stones[2]){
+												click[2]= false;
+											
+											}
+										}else{
+											number[2] =0;
+											chlab2[2] = null;
+											if(e.getSource() == stones[2]){
+												click[2]= true;
+												
+												}
+										}
+										System.out.println(number[2]+"3번");
+										System.out.println(chlab2[2]+"3번");
 									}
-							}
-							
-							System.out.println(number[0]+"1번");
-							System.out.println(chlab2[0]+"1번");
-						}
-					});
-					//2번째
-					stones[1].addActionListener(new ActionListener() {
-						
-						@Override
-						public void actionPerformed(ActionEvent e) {			
-							
-							if(click[1] == true && e.getSource() == stones[1]){
-								number[1] = num[1];
-								chlab2[1] = labels[1];
-								if(e.getSource() == stones[1]){
-									click[1]= false;
-								
-								}
-							}else{
-								number[1] =0;
-								chlab2[1] = null;
-								if(e.getSource() == stones[1]){
-									click[1]= true;
+								});
+								//4번째
+								stones[3].addActionListener(new ActionListener() {
 									
+									@Override
+									public void actionPerformed(ActionEvent e) {			
+									
+										if(click[3] == true && e.getSource() == stones[3]){
+											number[3] = renum[3];
+											chlab2[3] = labels[3];
+											if(e.getSource() == stones[3]){
+												click[3]= false;
+											
+											}
+										}else{
+											number[3] =0;
+											chlab2[3] = null;
+											if(e.getSource() == stones[3]){
+												click[3]= true;
+												
+												}
+										}
+										System.out.println(number[3]+"4번");
+										System.out.println(chlab2[3]+"4번");
 									}
-							}						
-							System.out.println(number[1]+"2번");
-							System.out.println(chlab2[1]+"2번");
-						}
-					});
-				//3번째
-					stones[2].addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {			
-					
-					if(click[2] == true && e.getSource() == stones[2]){
-						number[2] = num[2];
-						chlab2[2] = labels[2];
-						if(e.getSource() == stones[2]){
-							click[2]= false;
-						
-						}
-					}else{
-						number[2] =0;
-						chlab2[2] = null;
-						if(e.getSource() == stones[2]){
-							click[2]= true;
-							
-							}
-					}
-					System.out.println(number[2]+"3번");
-					System.out.println(chlab2[2]+"3번");
-				}
-			});
-			//4번째
-			stones[3].addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {			
-				
-					if(click[3] == true && e.getSource() == stones[3]){
-						number[3] = num[3];
-						chlab2[3] = labels[3];
-						if(e.getSource() == stones[3]){
-							click[3]= false;
-						
-						}
-					}else{
-						number[3] =0;
-						chlab2[3] = null;
-						if(e.getSource() == stones[3]){
-							click[3]= true;
-							
-							}
-					}
-					System.out.println(number[3]+"4번");
-					System.out.println(chlab2[3]+"4번");
-				}
-			});
+								});
 			
-			//5번째
-			stones[4].addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {			
-					
-					if(click[4] == true && e.getSource() == stones[4]){
-						number[4] = num[4];
-						chlab2[4] = labels[4];
-						if(e.getSource() == stones[4]){
-							click[4]= false;
-						
-						}
-					}else{
-						number[4] =0;
-						chlab2[4] = null;
-						if(e.getSource() == stones[4]){
-							click[4]= true;
-							
-							}
-					}
-					System.out.println(number[4]+"5번");
-					System.out.println(chlab2[4]+"5번");
-				}
-			});
-			//6번째
-			stones[5].addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {			
-					
-					if(click[5] == true && e.getSource() == stones[5]){
-						number[5] = num[5];
-						chlab2[5] = labels[5];
-						if(e.getSource() == stones[5]){
-							click[5]= false;
-						
-						}
-					}else{
-						number[5] =0;
-						chlab2[5] = null;
-						if(e.getSource() == stones[5]){
-							click[5]= true;
-							
-							}
-					}
-					System.out.println(number[5]+"6번");
-					System.out.println(chlab2[5]+"6번");
-				}
-			});
-							
+								//5번째
+								stones[4].addActionListener(new ActionListener() {
+									
+									@Override
+									public void actionPerformed(ActionEvent e) {			
+										
+										if(click[4] == true && e.getSource() == stones[4]){
+											number[4] = renum[4];
+											chlab2[4] = labels[4];
+											if(e.getSource() == stones[4]){
+												click[4]= false;
+											
+											}
+										}else{
+											number[4] =0;
+											chlab2[4] = null;
+											if(e.getSource() == stones[4]){
+												click[4]= true;
+												
+												}
+										}
+										System.out.println(number[4]+"5번");
+										System.out.println(chlab2[4]+"5번");
+									}
+								});
+								//6번째
+								stones[5].addActionListener(new ActionListener() {
+									
+									@Override
+									public void actionPerformed(ActionEvent e) {			
+										
+										if(click[5] == true && e.getSource() == stones[5]){
+											number[5] = renum[5];
+											chlab2[5] = labels[5];
+											if(e.getSource() == stones[5]){
+												click[5]= false;
+											
+											}
+										}else{
+											number[5] =0;
+											chlab2[5] = null;
+											if(e.getSource() == stones[5]){
+												click[5]= true;
+												
+												}
+										}
+										System.out.println(number[5]+"6번");
+										System.out.println(chlab2[5]+"6번");
+									}
+								});
+//까지 체크박스------------------------------	
+								
+		
+	for(int h=0;h<number.length;h++){
+		if(renum[h] != 10){
+			falsenum = labels[h];
+
+		}
+	}
+	System.out.println(falsenum+" 들어감\n");
 		//무게재기를 누르면 무게재기 새창이 뜬다.
 		weight = new JButton("무게재기");
 		weight.addActionListener(new ActionListener(){
@@ -289,7 +300,7 @@ public class PaGam extends JPanel{
 				if(da.getSource() == dab){
 					setVisible(false);
 					//removeAll();
-					solution = new Pasolu(main2,gmmain);
+					solution = new Pasolu(main2,gmmain,name1,falsenum);
 					gmmain.add(solution);
 					solution.setVisible(true);
 				}
