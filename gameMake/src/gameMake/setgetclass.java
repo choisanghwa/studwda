@@ -3,8 +3,8 @@ package gameMake;
 public class setgetclass {
 //	private static int number =6;
 	private String namse;
-	private int counts=0;
-	private int restartss =0;
+	private int counts;
+	private int restartss;
 	
 //	private int[] num = new int[number];
 //	private int[] renum = setRenum(num);

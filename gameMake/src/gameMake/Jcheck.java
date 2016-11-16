@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Jcheck extends JFrame {
-	
-	public Jcheck(int[] number, String[] chlab2){
+	int a=0;
+	public Jcheck(int[] number, String[] chlab2, setgetclass name1){
 		JPanel okch = new JPanel();
 		JLabel okcheck;
 		
@@ -18,6 +18,7 @@ public class Jcheck extends JFrame {
 		setSize(300,300);
 		setResizable(false);	
 		setVisible(true);
+		
 		for(int i=0; i<6;i++){
 			if(number[i] != 0){
 				if(number2[0] == 0 ){
@@ -53,6 +54,8 @@ public class Jcheck extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(e.getSource() == oK){
+						a+=1;
+						name1.setCounts(a);
 						dispose();
 					}
 					

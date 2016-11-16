@@ -58,6 +58,10 @@ public class PaMain extends JPanel {
 			}
 		});
 		
+		//배치관리자
+		name.setBounds(530, 150, 200, 50);
+		start1.setBounds(470, 450, 150, 50);
+		rank1.setBounds(660, 450, 150, 50);
 	}
 
 	@Override

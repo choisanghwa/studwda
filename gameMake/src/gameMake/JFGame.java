@@ -13,9 +13,9 @@ public  class JFGame extends JFrame {
 		setSize(906,662);
 		setResizable(false);
 		
-		bgimg= new ImageIcon("../gameMake/img/main1-1.jpg");
+		
 		main = new PaMain(this);
-
+		main.setLayout(null);
          add(main);
 		
 		setVisible(true);

@@ -1,5 +1,6 @@
 package gameMake;
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -11,8 +12,9 @@ public class Pasolu extends JPanel{
 	public	 JTextField solu;
 	 public String	 qmun= null;
 	public JFgood goods;
+	ImageIcon bgimg3;
 		public Pasolu(PaMain main2, JFGame gmmain, setgetclass name1, String falsenum, PaGam games){
-		
+			bgimg3 = new ImageIcon("../gameMake/img/solutionimg.jpg");
 			JTextField solu = new JTextField(10);
 			add(solu);
 			solu.addKeyListener(new KeyListener() {
@@ -55,5 +57,10 @@ public class Pasolu extends JPanel{
 		
 			
 	}
+		public void paintComponent(Graphics g2) {
+			g2.drawImage(bgimg3.getImage(), 0, 0, null);
+			setOpaque(false);
+			super.paintComponent(g2);
+		}
 
 }

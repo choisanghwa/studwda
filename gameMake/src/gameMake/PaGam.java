@@ -18,7 +18,7 @@ public class PaGam extends JPanel{
 	boolean[] click = {true,true,true,true,true,true} ;
 	ImageIcon bgimg2;
 	Jcheck check1;
-	JLabel text001,count1,rest,names;
+	JLabel count1,rest,names;
 	JCheckBox[] stones = new JCheckBox[nem];
 	JButton weight,dab,return1;
 	int wei_count= 0;
@@ -33,6 +33,7 @@ public class PaGam extends JPanel{
  	
  	
 	public PaGam(PaMain main2, JFGame gmmain, setgetclass name1){
+		bgimg2 = new ImageIcon("../gameMake/img/Gameimg.jpg");
 		num = new int[nem];
 		for(int i=0;i<num.length;i++){
 			if(i!=2){
@@ -54,50 +55,24 @@ public class PaGam extends JPanel{
 		System.out.println("\n");
 		//메인이미지
 		bgimg2 = new ImageIcon("../gameMake/img/Gameimg.jpg");
-	
+		
+		
 		//재시작횟수
-		names =new JLabel(name1.getNamse()+"의 현재 횟수는");
+		names =new JLabel(name1.getNamse()+"");
 		add(names);
 		
-		rest = new JLabel();
+		rest = new JLabel(name1.getRestartss()+"");
 		add(rest);
 		
 		
 		//무게 카운터 나타내는 라벨
-		count1 =new JLabel(name1.getCounts()+"번째");
+		count1 =new JLabel(name1.getCounts()+"");
 		add(count1);
 		
-
+		System.out.println(name1.getCounts());
 		for(int i=0;i<stones.length;i++){
 			stones[i] = new JCheckBox(labels[i]);
-			/*stones[i].addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {			
-					for(int j =0; j<stones.length;j++){
-					if(click[j] == true && e.getSource() == stones[j]){
-						number[j] = num[j];
-						chlab2[j] = labels[j];
-						if(e.getSource() == stones[j]){
-						click[j]= false;
-						
-						}
-					}else{
-						number[j] =0;
-						chlab2[j] = null;
-						if(e.getSource() == stones[j]){
-							click[j]= true;
-							
-							}
-					}
-					
-					System.out.println(number[j]+" "+j+"꺼");
-					System.out.println(chlab2[j]+" "+j+"글");
-				}
-					System.out.println("\n");
-				}
-				
-			});*/
+			
 			
 			
 			add(stones[i]);
@@ -279,8 +254,9 @@ public class PaGam extends JPanel{
 								|| number[2]*number[3] !=0|| number[2]*number[4] !=0|| number[2]*number[5] !=0 ||
 								number[3]*number[4] !=0 || number[3]*number[4] !=0 || number[3]*number[5] !=0 ||
 								number[4]*number[5] !=0){
-						wei_count++;
-						check1 = new Jcheck(number,chlab2);
+							++wei_count;
+					
+						check1 = new Jcheck(number,chlab2,name1);
 						}
 				}
 				
@@ -300,7 +276,7 @@ public class PaGam extends JPanel{
 			public void actionPerformed(ActionEvent da) {
 				if(da.getSource() == dab){
 					setVisible(false);
-					//removeAll();
+					
 					solution = new Pasolu(main2,gmmain,name1,falsenum,games);
 					gmmain.add(solution);
 					solution.setVisible(true);
@@ -350,15 +326,10 @@ public class PaGam extends JPanel{
 	}
 
 
-
-
-
-	
-	/*@Override
 	public void paintComponent(Graphics g2) {
 		g2.drawImage(bgimg2.getImage(), 0, 0, null);
 		setOpaque(false);
 		super.paintComponent(g2);
-	}*/
+	}
 }
 
