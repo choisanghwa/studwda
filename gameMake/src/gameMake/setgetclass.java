@@ -4,7 +4,8 @@ public class setgetclass {
 //	private static int number =6;
 	private String namse;
 	private int counts=0;
-	private int cki=0;
+	private int restartss =0;
+	
 //	private int[] num = new int[number];
 //	private int[] renum = setRenum(num);
 //
@@ -43,13 +44,14 @@ public class setgetclass {
 		this.counts = counts;
 	}
 
-	public int getCki() {
-		return cki;
+	public int getRestartss() {
+		return restartss;
 	}
 
-	public void setCki(int cki) {
-		this.cki = cki;
+	public void setRestartss(int restartss) {
+		this.restartss = restartss;
 	}
+
 
 //	
 //	public int[] getRenum() {

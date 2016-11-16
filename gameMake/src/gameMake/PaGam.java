@@ -13,6 +13,7 @@ import javax.swing.*;
 
 public class PaGam extends JPanel{
 	
+	public PaGam games;
 	final static int nem =6;	
 	boolean[] click = {true,true,true,true,true,true} ;
 	ImageIcon bgimg2;
@@ -300,7 +301,7 @@ public class PaGam extends JPanel{
 				if(da.getSource() == dab){
 					setVisible(false);
 					//removeAll();
-					solution = new Pasolu(main2,gmmain,name1,falsenum);
+					solution = new Pasolu(main2,gmmain,name1,falsenum,games);
 					gmmain.add(solution);
 					solution.setVisible(true);
 				}
