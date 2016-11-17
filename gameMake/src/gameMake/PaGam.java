@@ -21,7 +21,8 @@ public class PaGam extends JPanel{
 	JLabel count1,rest,names;
 	JCheckBox[] stones = new JCheckBox[nem];
 	JButton weight,dab,return1;
-	int wei_count= 0;
+	int wei_count=0;
+
 	Pasolu solution;
 
 	int[] num;
@@ -61,15 +62,22 @@ public class PaGam extends JPanel{
 		names =new JLabel(name1.getNamse()+"");
 		add(names);
 		
+	
 		rest = new JLabel(name1.getRestartss()+"");
 		add(rest);
 		
 		
 		//무게 카운터 나타내는 라벨
-		count1 =new JLabel(name1.getCounts()+"");
+		
+	
+		count1 =new JLabel(wei_count+"번");
 		add(count1);
 		
-		System.out.println(name1.getCounts());
+		
+			
+		
+		System.out.println(wei_count);
+		
 		for(int i=0;i<stones.length;i++){
 			stones[i] = new JCheckBox(labels[i]);
 			
@@ -254,9 +262,11 @@ public class PaGam extends JPanel{
 								|| number[2]*number[3] !=0|| number[2]*number[4] !=0|| number[2]*number[5] !=0 ||
 								number[3]*number[4] !=0 || number[3]*number[4] !=0 || number[3]*number[5] !=0 ||
 								number[4]*number[5] !=0){
-							++wei_count;
-					
-						check1 = new Jcheck(number,chlab2,name1);
+							
+							wei_count++;
+							count1.setText(wei_count+"");
+							System.out.println(wei_count);
+						check1 = new Jcheck(number,chlab2);
 						}
 				}
 				

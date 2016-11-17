@@ -3,7 +3,6 @@ package gameMake;
 public class setgetclass {
 //	private static int number =6;
 	private String namse;
-	private int counts;
 	private int restartss;
 	
 //	private int[] num = new int[number];
@@ -36,13 +35,7 @@ public class setgetclass {
 		this.namse = namse;
 	}
 
-	public int getCounts() {
-		return counts;
-	}
-
-	public void setCounts(int counts) {
-		this.counts = counts;
-	}
+	
 
 	public int getRestartss() {
 		return restartss;
