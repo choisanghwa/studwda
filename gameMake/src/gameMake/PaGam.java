@@ -59,7 +59,7 @@ public class PaGam extends JPanel{
 		
 		
 		//¿ÁΩ√¿€»Ωºˆ
-		names =new JLabel(name1.getNamse()+"");
+		names =new JLabel(name1.getNamse()+" ¥‘¿«");
 		add(names);
 		
 	
@@ -79,7 +79,7 @@ public class PaGam extends JPanel{
 		System.out.println(wei_count);
 		
 		for(int i=0;i<stones.length;i++){
-			stones[i] = new JCheckBox(labels[i]);
+			stones[i] = new JCheckBox();
 			
 			
 			
@@ -288,7 +288,9 @@ public class PaGam extends JPanel{
 					setVisible(false);
 					
 					solution = new Pasolu(main2,gmmain,name1,falsenum,games);
+					solution.setLayout(null);
 					gmmain.add(solution);
+					
 					solution.setVisible(true);
 				}
 				
@@ -318,6 +320,19 @@ public class PaGam extends JPanel{
 			}		
 		});
 		add(return1);
+		
+		names.setBounds(450, 20, 200, 50);
+		rest.setBounds(700, 20, 200, 50);
+		count1.setBounds(115, 330, 150, 50);
+		weight.setBounds(365, 530, 150, 50);
+		dab.setBounds(660, 450, 150, 50);
+		return1.setBounds(660, 530, 150, 50);
+		stones[0].setBounds(100, 200, 15, 15);
+		stones[1].setBounds(200, 200, 15, 15);
+		stones[2].setBounds(300, 200, 15,15);
+		stones[3].setBounds(400, 200, 15, 15);
+		stones[4].setBounds(500, 200, 15, 15);
+		stones[5].setBounds(600, 200, 15, 15);
 		}
 
 
@@ -341,5 +356,7 @@ public class PaGam extends JPanel{
 		setOpaque(false);
 		super.paintComponent(g2);
 	}
+	
+	
 }
 

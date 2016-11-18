@@ -38,6 +38,7 @@ public class PaMain extends JPanel {
 					games = new PaGam(main2,gmmain,name1);
 					//JFrame을 불러와 불러온곳에 games를 add하기
 					gmmain.add(games);
+					games.setLayout(null);
 					games.setVisible(true);
 				}
 			}

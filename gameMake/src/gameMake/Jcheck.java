@@ -37,10 +37,10 @@ public class Jcheck extends JFrame {
 			
 			
 			if(number2[0] > number2[1] ){
-				okcheck = new JLabel(chlab3[0]+"이 큽니다.");
+				okcheck = new JLabel(chlab3[0]+" 쪽이 큽니다.");
 
 			}else if(number2[0] < number2[1]){
-				okcheck = new JLabel(chlab3[0]+"이 작습니다.");
+				okcheck = new JLabel(chlab3[0]+" 쪽이 작습니다.");
 	
 			}else{
 				okcheck = new JLabel("무게가 같습니다.");

@@ -35,6 +35,7 @@ public class Pasolu extends JPanel{
 							
 							setVisible(false);
 							goods = new JFgood(name1, gmmain);
+							goods.setLayout(null);
 							//JFrame을 불러와 불러온곳에 games를 add하기
 							gmmain.add(goods);
 							goods.setVisible(true);
@@ -43,7 +44,9 @@ public class Pasolu extends JPanel{
 							
 							setVisible(false);
 							goods = new JFgood(name1,games,main2,gmmain);
+							goods.setLayout(null);
 							gmmain.add(goods);
+							
 							System.out.println("아니다");
 						}
 					}
@@ -54,7 +57,7 @@ public class Pasolu extends JPanel{
 			});
 
 			
-		
+			solu.setBounds(550, 350, 200, 50);
 			
 	}
 		public void paintComponent(Graphics g2) {
