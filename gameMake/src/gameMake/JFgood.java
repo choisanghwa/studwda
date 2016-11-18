@@ -9,7 +9,7 @@ import javax.swing.*;
 
 public class JFgood extends JPanel{
 		JButton restart,exits;
-		int restart1=1;
+		static int restart1=0;
 		ImageIcon bgimg4;
 	public JFgood(setgetclass name1, JFGame gmmain){
 		bgimg4 = new ImageIcon("../gameMake/img/solutio_1.jpg");
@@ -49,10 +49,12 @@ public class JFgood extends JPanel{
 							name1.setRestartss(restart1);
 							System.out.println(name1.getRestartss());
 							setVisible(false);
-							/*PaGam games = new PaGam(main2, gmmain, name1);
-							gmmain.add(games);*/
-							games.setVisible(true);
+							PaGam games = new PaGam(main2, gmmain, name1);
 							games.setLayout(null);
+							gmmain.add(games);
+							
+							games.setVisible(true);
+							
 							
 							
 						}
