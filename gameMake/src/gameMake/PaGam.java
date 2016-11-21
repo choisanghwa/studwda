@@ -2,6 +2,7 @@ package gameMake;
 
 
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -32,7 +33,7 @@ public class PaGam extends JPanel{
 	String[] chlab2 = new String[nem];	//선택시  alphabet이 저장된다.
  	int[] number= new int[nem]; //선택시 이곳에 수가 저장된다.
  	String falsenum=null; // 정답이 이곳에 저장된다.
- 	
+ 	Font textfont = new Font("돋움",Font.BOLD,25);
  	//생성자
 	public PaGam(PaMain main2, JFGame gmmain, setgetclass name1){
 		
@@ -63,16 +64,16 @@ public class PaGam extends JPanel{
 		//이름 입력창에 입력한 이름을 받아온다.
 		names =new JLabel(name1.getNamse()+" 님의");
 		add(names);
-		
+		names.setFont(textfont);
 		//재시작횟수
 		rest = new JLabel(name1.getRestartss()+"");
 		add(rest);
-		
+		rest.setFont(textfont);
 		
 		//무게를 잰 횟수를 나타내는 라벨
 		count1 =new JLabel(wei_count+"번");
 		add(count1);
-		
+		count1.setFont(textfont);
 		
 		//체크박스 생성
 		for(int i=0;i<stones.length;i++){

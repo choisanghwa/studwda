@@ -106,82 +106,12 @@ public class JFgood extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == restart){
 				
-					//1.드라이버 로딩
-			 		try {
-						Class.forName("oracle.jdbc.driver.OracleDriver");	
-			 		//2.Connection 객체 생성
-					  String url = "jdbc:oracle:thin:@net.yjc.ac.kr:1521:orcl";
-			 	      String id = "s1201295";
-			 	      String pw = "p1201295";
-			 	      Connection conn = DriverManager.getConnection(url, id,pw);
-			 	  
-			 	  
-			 	      //3.PrepareStatment 객체 생성
-			 	      String sql = "insert into PLAYER(NAME, TIME, SCORE)"
-			 	    		  			+"values(?,SYSDATE,?)";
-			 	      PreparedStatement psmt = conn.prepareStatement(sql);
-			 	      
-			 	      //4.질의 실행을 위해 ? 값을 설정
-		 	    
-			 	      psmt.setString(1,nameget );		 				 	
-			 	      psmt.setInt(3,restarts);
-			 	    
-			 	  
-			 	      psmt.executeUpdate();
-			 	      
-			 	      //5.연결종료
-			 	      psmt.close();
-			 	      conn.close();
-			 	} catch(Exception e1)
-			{
-				e1.printStackTrace();
-			}
-			 		//현재 창 지운다
-			 		gmmain2.dispose();
-			 		//새로운 창을 띄운다.
-			 		new JFGame();
-			 		
-			}else if(e.getSource() == exits){
-				//1.드라이버 로딩
-		 		try {
-					Class.forName("oracle.jdbc.driver.OracleDriver");
-				
-		 		
-		 		//2.Connection 객체 생성
-		 		String url = "jdbc:oracle:thin:@net.yjc.ac.kr:1521:orcl";
-		 	      String id = "s1201295";
-		 	      String pw = "p1201295";
-		 	      Connection conn = DriverManager.getConnection(url, id,pw);
-		 	  
-		 	  
-		 	      //3.PrepareStatment 객체 생성
-		 	      String sql = "insert into PLAYER(NAME, TIME, SCORE)"
-		 	    		  			+"values(?,SYSDATE,?)";
-		 	      PreparedStatement psmt = conn.prepareStatement(sql);
-		 	      
-		 	      //4.질의 실행을 위해 ? 값을 설정
-	 	    
-			 	    psmt.setString(1,nameget );		 
-			 	
-				psmt.setInt(3,restarts);
-		 	    
-		 	 
-		 	  
-		 	      psmt.executeUpdate();
-		 	      
-		 	      //5.연결종료
-		 	      psmt.close();
-		 	      conn.close();
-		 	} catch(Exception e1)
-		{
-			e1.printStackTrace();
-		}
 				gmmain2.dispose();
 			}
 			
 		}
 		
-	}
+		}
 	public void paintComponent(Graphics g2) {
 		g2.drawImage(bgimg4.getImage(), 0, 0, null);
 		setOpaque(false);

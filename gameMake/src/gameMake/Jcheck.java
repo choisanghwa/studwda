@@ -1,11 +1,13 @@
 package gameMake;
 
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 public class Jcheck extends JFrame {
+	int a = 0;
 	public Jcheck(int[] number, String[] chlab2){
 		JPanel okch = new JPanel();
 		JLabel okcheck;
@@ -38,10 +40,10 @@ public class Jcheck extends JFrame {
 			
 			if(number2[0] > number2[1] ){
 				okcheck = new JLabel(chlab3[0]+" 쪽이 큽니다.");
-
+				a = 1;
 			}else if(number2[0] < number2[1]){
 				okcheck = new JLabel(chlab3[0]+" 쪽이 작습니다.");
-	
+				a = -1;
 			}else{
 				okcheck = new JLabel("무게가 같습니다.");
 	
@@ -66,4 +68,27 @@ public class Jcheck extends JFrame {
 			add(okch);
 						
 	}
+	ImageIcon bgimg5;
+	
+	public void paintComponent(Graphics g){
+		if(a == 1){
+			bgimg5 = new ImageIcon("../gameMake/img/Scale_Right.jpg");
+		}else if(a==-1){
+			bgimg5 = new ImageIcon("../gameMake/img/Scale_left.jpg");
+		}else{
+			bgimg5 = new ImageIcon("../gameMake/img/Gameimg.jpg");
+		}
+		g.drawImage(bgimg5.getImage(), 0, 0, null);
+		setOpaque();
+		super.paintComponents(g);
+		
+	}
+
+	private boolean setOpaque() {
+		return false;
+		
+	}
+
+
+	
 }
