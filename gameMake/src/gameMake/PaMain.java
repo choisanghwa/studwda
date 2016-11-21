@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class PaMain extends JPanel {
-	ImageIcon bgimg;
+	ImageIcon bgimg; //배경
 	JButton start1,rank1;
 	final JTextField name;
 	public PaMain main2 = this;
@@ -23,15 +23,18 @@ public class PaMain extends JPanel {
 		add(name);
 		//이름 입력
 		
+		//게임 스타트 버튼
 		start1 = new JButton("gamestart");			
+		add(start1);
+		
+		//액션
 		start1.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			//	name1 = name.getText();
 				name1.setNamse(name.getText());
 				name2= name1.getNamse();
+		
 				//이름의 길이로 이름을 입력했는지 안했는지 확인한다.
-				
 				if (e.getSource() == start1 && name2.length() !=0){							
 					setVisible(false);
 					
@@ -44,11 +47,13 @@ public class PaMain extends JPanel {
 			}
 		});
 	
-		add(start1);
 		
 		
+		//랭킹 프레임을 만들어 띄운다.
 		rank1 = new JButton("Rank");
 		add(rank1);
+		
+		//액션
 		rank1.addActionListener(new ActionListener() {		
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -64,7 +69,8 @@ public class PaMain extends JPanel {
 		start1.setBounds(470, 450, 150, 50);
 		rank1.setBounds(660, 450, 150, 50);
 	}
-
+	
+	//배경이미지
 	@Override
 	public void paintComponent(Graphics g) {
 		g.drawImage(bgimg.getImage(), 0, 0, null);

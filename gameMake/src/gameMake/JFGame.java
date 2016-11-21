@@ -6,7 +6,7 @@ import javax.swing.*;
 
 public  class JFGame extends JFrame {
 	public PaMain main;
-	ImageIcon bgimg;
+	
 	public JFGame(){
 		setTitle("¾çÆÈ Àú¿ïGame");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

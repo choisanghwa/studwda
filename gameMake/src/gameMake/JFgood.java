@@ -4,6 +4,11 @@ package gameMake;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import javax.swing.*;
 
@@ -11,35 +16,42 @@ public class JFgood extends JPanel{
 		JButton restart,exits;
 		static int restart1=0;
 		ImageIcon bgimg4;
-	public JFgood(setgetclass name1, JFGame gmmain){
-		bgimg4 = new ImageIcon("../gameMake/img/solutio_1.jpg");
-		MyListener listener = new MyListener(gmmain);
-		restart =new JButton("시작페이지로");
-		exits = new JButton("그만두기");
-		
-		
-		//시작페이지 버튼 무명클래스
-		restart.addActionListener(listener);
-		add(restart);
-		exits.addActionListener(listener);
-		add(exits);
-		//시작페이지 무명클래스 끝
-		//그만두기를 클릭하면 DB에 저장된다.
 	
-		restart.setBounds(530, 350, 200, 60);
-		exits.setBounds(530, 430, 200, 60);
+		//생성자 2
+		//정답일때 생성되는 생성자
+		public JFgood(setgetclass name1, JFGame gmmain){
+			
+			bgimg4 = new ImageIcon("../gameMake/img/solutio_1.jpg");
+			MyListener listener = new MyListener(gmmain,name1);
+			restart =new JButton("시작페이지로");
+			exits = new JButton("그만두기");
+		
+		
+			//시작페이지 버튼,그만두기  액션
+			restart.addActionListener(listener);
+			add(restart);
+			exits.addActionListener(listener);
+			add(exits);
+			//클릭하면 DB에 저장된다.
+		
+			//배치관리자
+			restart.setBounds(530, 350, 200, 60);
+			exits.setBounds(530, 430, 200, 60);
 	}
 
-	// 틀릴때 생성된다.
-	public JFgood(setgetclass name1, PaGam games,PaMain main2, JFGame gmmain) {
-		bgimg4 = new ImageIcon("../gameMake/img/solutio_2.jpg");
-		restart =new JButton("다시시작");
-		exits = new JButton("그만두기");
+	//----------------------------------------------------------------------------------------------------------
+	
+		//생성자 2
+		// 틀릴때 생성된다.
+		public JFgood(setgetclass name1, PaGam games,PaMain main2, JFGame gmmain) {
+			bgimg4 = new ImageIcon("../gameMake/img/solutio_2.jpg");
+			restart =new JButton("다시시작");
+			exits = new JButton("그만두기");
 		
-		add(restart);
-		add(exits);
+			add(restart);
+			add(exits);
 		
-		//다시시작 페이지 버튼 무명클래스
+			//다시시작 페이지 버튼 무명클래스
 				restart.addActionListener(new ActionListener() {
 					
 					@Override
@@ -61,6 +73,7 @@ public class JFgood extends JPanel{
 					}
 				});
 				//다시시작 페이지 무명클래스 끝
+				
 				//끝내기
 				exits.addActionListener(new ActionListener() {
 					
@@ -73,21 +86,96 @@ public class JFgood extends JPanel{
 				restart.setBounds(530, 350, 200, 60);
 				exits.setBounds(530, 430, 200, 60);
 	}
-	//정답시 클릭 이벤트
+
+		
+//----------------------------------------------------------------------------------------------------------
+		
+		//정답시 클릭 이벤트
 	private class MyListener implements ActionListener{
 		JFGame gmmain2;
-		public MyListener(JFGame gmmain) {
+		String nameget;
+		int restarts;
+		//생성자
+		public MyListener(JFGame gmmain, setgetclass name1) {
 			gmmain2 = gmmain;
+			nameget = name1.getNamse();
+			restarts = name1.getRestartss();
 		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			if(e.getSource() == restart){
-				if(e.getSource() == restart){
-					gmmain2.dispose();
-					new JFGame();
-					}
+				
+					//1.드라이버 로딩
+			 		try {
+						Class.forName("oracle.jdbc.driver.OracleDriver");	
+			 		//2.Connection 객체 생성
+					  String url = "jdbc:oracle:thin:@net.yjc.ac.kr:1521:orcl";
+			 	      String id = "s1201295";
+			 	      String pw = "p1201295";
+			 	      Connection conn = DriverManager.getConnection(url, id,pw);
+			 	  
+			 	  
+			 	      //3.PrepareStatment 객체 생성
+			 	      String sql = "insert into PLAYER(NAME, TIME, SCORE)"
+			 	    		  			+"values(?,SYSDATE,?)";
+			 	      PreparedStatement psmt = conn.prepareStatement(sql);
+			 	      
+			 	      //4.질의 실행을 위해 ? 값을 설정
+		 	    
+			 	      psmt.setString(1,nameget );		 				 	
+			 	      psmt.setInt(3,restarts);
+			 	    
+			 	  
+			 	      psmt.executeUpdate();
+			 	      
+			 	      //5.연결종료
+			 	      psmt.close();
+			 	      conn.close();
+			 	} catch(Exception e1)
+			{
+				e1.printStackTrace();
+			}
+			 		//현재 창 지운다
+			 		gmmain2.dispose();
+			 		//새로운 창을 띄운다.
+			 		new JFGame();
+			 		
 			}else if(e.getSource() == exits){
+				//1.드라이버 로딩
+		 		try {
+					Class.forName("oracle.jdbc.driver.OracleDriver");
+				
+		 		
+		 		//2.Connection 객체 생성
+		 		String url = "jdbc:oracle:thin:@net.yjc.ac.kr:1521:orcl";
+		 	      String id = "s1201295";
+		 	      String pw = "p1201295";
+		 	      Connection conn = DriverManager.getConnection(url, id,pw);
+		 	  
+		 	  
+		 	      //3.PrepareStatment 객체 생성
+		 	      String sql = "insert into PLAYER(NAME, TIME, SCORE)"
+		 	    		  			+"values(?,SYSDATE,?)";
+		 	      PreparedStatement psmt = conn.prepareStatement(sql);
+		 	      
+		 	      //4.질의 실행을 위해 ? 값을 설정
+	 	    
+			 	    psmt.setString(1,nameget );		 
+			 	
+				psmt.setInt(3,restarts);
+		 	    
+		 	 
+		 	  
+		 	      psmt.executeUpdate();
+		 	      
+		 	      //5.연결종료
+		 	      psmt.close();
+		 	      conn.close();
+		 	} catch(Exception e1)
+		{
+			e1.printStackTrace();
+		}
 				gmmain2.dispose();
 			}
 			
