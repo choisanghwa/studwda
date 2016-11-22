@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.*;
@@ -95,7 +96,7 @@ public class JFgood extends JPanel{
 		JFGame gmmain2;
 		String nameget;
 		int restarts;
-		//생성자
+	
 		public MyListener(JFGame gmmain, setgetclass name1) {
 			gmmain2 = gmmain;
 			nameget = name1.getNamse();
@@ -104,14 +105,65 @@ public class JFgood extends JPanel{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			//시작페이지 버튼
 			if(e.getSource() == restart){
-				
+				//db에 추가하기 위한 메소드 호출
+				addPLAYER(nameget, restarts);
+				gmmain2.dispose();
+				new JFGame();
+			}//그만두기 버튼
+			else if(e.getSource() == exits){
+				addPLAYER(nameget, restarts);
 				gmmain2.dispose();
 			}
 			
 		}
 		
+		//DB드라이버를 적재하고 연결
+		private Connection makeConnection() {
+			String url = "jdbc:oracle:thin:@net.yjc.ac.kr:1521:orcl";
+	 	      String id = "s1201295";
+	 	      String pw = "p1201295";
+	 	     Connection con = null;
+	 	     try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				con = DriverManager.getConnection(url, id,pw);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return con;
 		}
+		
+		//DB에 이름과 재시작 횟수를 추가한다.
+		private void addPLAYER(String nameget, int restarts) {
+			Connection con = makeConnection();
+			try {
+				Statement stmt = con.createStatement();
+				String s= "INSERT INTO PLAYER(NAME, TIME, SCORE) VALUES(?,SYSDATE,?)";
+				 PreparedStatement psmt = con.prepareStatement(s);
+				
+		 	     psmt.setString(1, nameget);	 
+		 	     psmt.setInt(2, restarts);
+		 	
+		 	      psmt.executeUpdate();
+		 	      
+		 	      //5.연결종료
+		 	      psmt.close();
+		 	      con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+
+}
+	
+	//배치관리자
 	public void paintComponent(Graphics g2) {
 		g2.drawImage(bgimg4.getImage(), 0, 0, null);
 		setOpaque(false);

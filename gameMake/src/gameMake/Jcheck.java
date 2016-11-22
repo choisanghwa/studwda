@@ -11,18 +11,17 @@ public class Jcheck extends JFrame {
 	public Jcheck(int[] number, String[] chlab2){
 		setTitle("무게재기");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setSize(71000,700);
+		setSize(200,200);
 		setResizable(false);	
 		setVisible(true);
 		
 		
 		JPanel okch = new JPanel();
-		okch.setLayout(null);
 		
 		JLabel okcheck;
-		JLabel imgBox;
+	//	JLabel imgBox;
 		
-		ImageIcon img;
+//		ImageIcon img;
 		
 		int[] number2= {0,0};
 		String[] chlab3 = {null,null};
@@ -48,19 +47,18 @@ public class Jcheck extends JFrame {
 			
 			if(number2[0] > number2[1] ){
 				okcheck = new JLabel(chlab3[0]+" 쪽이 큽니다.");
-				img = new ImageIcon("../gameMake/img/Scale_Right.jpg");
-				imgBox = new JLabel(img);
-				imgBox.setBounds(0, 50,493,371);
+		//		img = new ImageIcon("../gameMake/img/Scale_Right.jpg");
+			
+				
 			}else if(number2[0] < number2[1]){
 				okcheck = new JLabel(chlab3[0]+" 쪽이 작습니다.");
-				img = new ImageIcon("../gameMake/img/Scale_left.jpg");
-				imgBox = new JLabel(img);
-				imgBox.setBounds(0, 50,493,371);
+				//img = new ImageIcon("../gameMake/img/Scale_left.jpg");
+				
+				
 			}else{
 				okcheck = new JLabel("무게가 같습니다.");
-				img = new ImageIcon("../gameMake/img/Gameimg.jpg");
-				imgBox = new JLabel(img);
-				imgBox.setBounds(0, 50,493,371);
+				//img = new ImageIcon("../gameMake/img/Gameimg.jpg");
+			
 			}
 			
 			JButton oK = new JButton("돌아가기");
@@ -75,8 +73,9 @@ public class Jcheck extends JFrame {
 				}
 			});
 			
-			
-			add(imgBox);
+		/*	imgBox = new JLabel(img);
+			imgBox.setBounds(0, 50,493,371);
+			add(imgBox);*/
 			okch.add(okcheck);
 			okch.add(oK);
 			add(okch);
