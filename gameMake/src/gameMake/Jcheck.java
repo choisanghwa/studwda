@@ -1,6 +1,8 @@
 package gameMake;
 
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,14 +16,12 @@ public class Jcheck extends JFrame {
 		setSize(200,200);
 		setResizable(false);	
 		setVisible(true);
-		
+		setLayout(new GridLayout(0, 1));
 		
 		JPanel okch = new JPanel();
-		
+		Font textfont = new Font("돋움",Font.BOLD,25);
 		JLabel okcheck;
-	//	JLabel imgBox;
-		
-//		ImageIcon img;
+
 		
 		int[] number2= {0,0};
 		String[] chlab3 = {null,null};
@@ -38,26 +38,20 @@ public class Jcheck extends JFrame {
 				}				
 			}
 		}
-		System.out.println("\n");
-			System.out.println(number2[0]+"ch");
-			System.out.println(chlab3[0]+"ch");
-			System.out.println(number2[1]+"ch2");
-			System.out.println(chlab3[1]+"ch2");
-			
+
 			
 			if(number2[0] > number2[1] ){
 				okcheck = new JLabel(chlab3[0]+" 쪽이 큽니다.");
-		//		img = new ImageIcon("../gameMake/img/Scale_Right.jpg");
+	
 			
 				
 			}else if(number2[0] < number2[1]){
 				okcheck = new JLabel(chlab3[0]+" 쪽이 작습니다.");
-				//img = new ImageIcon("../gameMake/img/Scale_left.jpg");
 				
 				
 			}else{
 				okcheck = new JLabel("무게가 같습니다.");
-				//img = new ImageIcon("../gameMake/img/Gameimg.jpg");
+	
 			
 			}
 			
@@ -73,13 +67,14 @@ public class Jcheck extends JFrame {
 				}
 			});
 			
-		/*	imgBox = new JLabel(img);
-			imgBox.setBounds(0, 50,493,371);
-			add(imgBox);*/
+			okcheck.setFont(textfont);
+
 			okch.add(okcheck);
 			okch.add(oK);
 			add(okch);
 						
+			
+			
 	}
 
 

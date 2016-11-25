@@ -27,9 +27,9 @@ public class Pasolu extends JPanel{
 				
 				@Override
 				public void keyPressed(KeyEvent e) {
-					qmun = solu.getText();
+					qmun =  solu.getText();
+					qmun = qmun.toUpperCase();
 					if(qmun.length()!= 0 && e.getKeyCode() == e.VK_ENTER){
-						System.out.println(qmun);
 						
 						if(qmun.equals(falsenum)){
 							
@@ -39,7 +39,7 @@ public class Pasolu extends JPanel{
 							//JFrame을 불러와 불러온곳에 games를 add하기
 							gmmain.add(goods);
 							goods.setVisible(true);
-							System.out.println("정답");
+		
 						}else{
 							
 							setVisible(false);
@@ -47,7 +47,7 @@ public class Pasolu extends JPanel{
 							goods.setLayout(null);
 							gmmain.add(goods);
 							
-							System.out.println("아니다");
+		
 						}
 					}
 					

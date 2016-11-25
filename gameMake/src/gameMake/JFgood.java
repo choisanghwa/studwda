@@ -17,7 +17,8 @@ public class JFgood extends JPanel{
 		JButton restart,exits;
 		static int restart1=0;
 		ImageIcon bgimg4;
-	
+		ImageIcon OTLimg;
+		JLabel OTLim;
 		//생성자 2
 		//정답일때 생성되는 생성자
 		public JFgood(setgetclass name1, JFGame gmmain){
@@ -48,7 +49,9 @@ public class JFgood extends JPanel{
 			bgimg4 = new ImageIcon("../gameMake/img/solutio_2.jpg");
 			restart =new JButton("다시시작");
 			exits = new JButton("그만두기");
-		
+			OTLimg = new ImageIcon("../gameMake/img/otl.png");
+			OTLim = new JLabel(OTLimg);
+			add(OTLim);
 			add(restart);
 			add(exits);
 		
@@ -60,7 +63,7 @@ public class JFgood extends JPanel{
 						if(e.getSource() == restart){
 							++restart1;
 							name1.setRestartss(restart1);
-							System.out.println(name1.getRestartss());
+							
 							setVisible(false);
 							PaGam games = new PaGam(main2, gmmain, name1);
 							games.setLayout(null);
@@ -84,6 +87,9 @@ public class JFgood extends JPanel{
 						
 					}
 				});
+				
+				//배치 관리자
+				OTLim.setBounds(100, 200, 410, 328);
 				restart.setBounds(530, 350, 200, 60);
 				exits.setBounds(530, 430, 200, 60);
 	}

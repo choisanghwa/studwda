@@ -4,6 +4,8 @@ package gameMake;
 
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridLayout;
+import java.awt.Label;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,12 +20,16 @@ public class PaGam extends JPanel{
 	final static int nem =6;	
 	boolean[] click = {true,true,true,true,true,true} ;
 	ImageIcon bgimg2; //배경이미지
+	ImageIcon laimg,laimg2; //라벨 이미지
 	Jcheck check1;  //무게 체크를 위한 박스
 	JLabel count1,rest,names; // 무게잰 횟수, 다시시작한 횟수, 이름
 	JCheckBox[] stones = new JCheckBox[nem]; // 체크박스 
 	JLabel[] stoneimg =new JLabel[nem];
-	JButton weight,dab,return1; // 무게제기, 답입력창, 이전화면으로 돌아가기
+	JButton weight,dab,stop; // 무게제기, 답입력창, 그만두기
 	int wei_count=0; //무게잰 횟수
+	int chck =0; //체크를 제한하는 변수 
+	//체크가 2초과될 경우 클릭이 안된다.
+	//체크가 1일경우과 0일 경우도 안된다.
 
 	Pasolu solution;   // 답입력창으로 이동하기 위한 선언
 
@@ -77,13 +83,20 @@ public class PaGam extends JPanel{
 		
 		//체크박스 생성
 		for(int i=0;i<stones.length;i++){
-			stones[i] = new JCheckBox();
-		
+			stones[i] = new JCheckBox();	
 			add(stones[i]);
-		
 		}
-		/*stoneimg[0] =new JLabel("../gameMake/img/Gameimg.jpg");
-		add(stoneimg[0]);*/
+		
+		//라벨 생성
+		laimg= new ImageIcon("../gameMake/img/stones.png"); //라벨 이미지
+		laimg2= new ImageIcon("../gameMake/img/colorstones.png");
+		for(int j= 0;j<stoneimg.length;j++){
+			stoneimg[j] = new JLabel(alphabet[j],laimg,JLabel.CENTER);
+			stoneimg[j].setVerticalTextPosition(JLabel.CENTER);
+			stoneimg[j].setHorizontalTextPosition(JLabel.CENTER);
+			add(stoneimg[j]);
+		}
+		
 //여기서 부터 체크박스 이벤트 (무명클래스)==============
 										//1번째
 										stones[0].addActionListener(new ActionListener() {
@@ -91,11 +104,13 @@ public class PaGam extends JPanel{
 											@Override
 											public void actionPerformed(ActionEvent e) {			
 												//처음 클릭시에는 click에 true이기에 가능 
-												if(click[0] == true && e.getSource() == stones[0]){
+												if( click[0] == true && e.getSource() == stones[0] ){
 													//renum의 값이 number에 저장된다.
 													//alphabet 값이 chlab2에 저장된다.
 													number[0] = renum[0];
 													chlab2[0] = alphabet [0];
+													stoneimg[0].setIcon(laimg2);
+													chck = chck+1;
 													//한번더 클릭하면(체크해제) click false로 바뀐다.
 													if(e.getSource() == stones[0]){
 													click[0]= false;
@@ -106,6 +121,8 @@ public class PaGam extends JPanel{
 												}else{
 													number[0] =0;
 													chlab2[0] = null;
+													stoneimg[0].setIcon(laimg);
+													chck = chck-1;
 													//click가 false일때 한번더 누르면 true로 다시 전환됨
 													//다시 true 값이 true가 되므로 다시 누르면  값이 들어가게 된다.
 													if(e.getSource() == stones[0]){
@@ -124,9 +141,11 @@ public class PaGam extends JPanel{
 											@Override
 											public void actionPerformed(ActionEvent e) {			
 												
-												if(click[1] == true && e.getSource() == stones[1]){
+												if( click[1] == true && e.getSource() == stones[1]){
 													number[1] = renum[1];
 													chlab2[1] = alphabet [1];
+													stoneimg[1].setIcon(laimg2);
+													chck = chck+1;
 													if(e.getSource() == stones[1]){
 														click[1]= false;
 													
@@ -134,6 +153,8 @@ public class PaGam extends JPanel{
 												}else{
 													number[1] =0;
 													chlab2[1] = null;
+													stoneimg[1].setIcon(laimg);
+													chck = chck-1;
 													if(e.getSource() == stones[1]){
 														click[1]= true;
 														
@@ -149,9 +170,11 @@ public class PaGam extends JPanel{
 									@Override
 									public void actionPerformed(ActionEvent e) {			
 										
-										if(click[2] == true && e.getSource() == stones[2]){
+										if( click[2] == true && e.getSource() == stones[2]){
 											number[2] = renum[2];
 											chlab2[2] = alphabet [2];
+											stoneimg[2].setIcon(laimg2);
+											chck = chck+1;
 											if(e.getSource() == stones[2]){
 												click[2]= false;
 											
@@ -159,6 +182,8 @@ public class PaGam extends JPanel{
 										}else{
 											number[2] =0;
 											chlab2[2] = null;
+											stoneimg[2].setIcon(laimg);
+											chck = chck-1;
 											if(e.getSource() == stones[2]){
 												click[2]= true;
 												
@@ -177,6 +202,8 @@ public class PaGam extends JPanel{
 										if(click[3] == true && e.getSource() == stones[3]){
 											number[3] = renum[3];
 											chlab2[3] = alphabet [3];
+											stoneimg[3].setIcon(laimg2);
+											chck = chck+1;
 											if(e.getSource() == stones[3]){
 												click[3]= false;
 											
@@ -184,6 +211,8 @@ public class PaGam extends JPanel{
 										}else{
 											number[3] =0;
 											chlab2[3] = null;
+											stoneimg[3].setIcon(laimg);
+											chck = chck-1;
 											if(e.getSource() == stones[3]){
 												click[3]= true;
 												
@@ -199,9 +228,11 @@ public class PaGam extends JPanel{
 									@Override
 									public void actionPerformed(ActionEvent e) {			
 										
-										if(click[4] == true && e.getSource() == stones[4]){
+										if( click[4] == true && e.getSource() == stones[4]){
 											number[4] = renum[4];
 											chlab2[4] = alphabet [4];
+											stoneimg[4].setIcon(laimg2);
+											chck = chck+1;
 											if(e.getSource() == stones[4]){
 												click[4]= false;
 											
@@ -209,6 +240,8 @@ public class PaGam extends JPanel{
 										}else{
 											number[4] =0;
 											chlab2[4] = null;
+											stoneimg[4].setIcon(laimg);
+											chck = chck-1;
 											if(e.getSource() == stones[4]){
 												click[4]= true;
 												
@@ -224,9 +257,11 @@ public class PaGam extends JPanel{
 									@Override
 									public void actionPerformed(ActionEvent e) {			
 										
-										if(click[5] == true && e.getSource() == stones[5]){
+										if( click[5] == true && e.getSource() == stones[5]){
 											number[5] = renum[5];
 											chlab2[5] = alphabet [5];
+											stoneimg[5].setIcon(laimg2);
+											chck = chck+1;
 											if(e.getSource() == stones[5]){
 												click[5]= false;
 											
@@ -234,6 +269,8 @@ public class PaGam extends JPanel{
 										}else{
 											number[5] =0;
 											chlab2[5] = null;
+											stoneimg[5].setIcon(laimg);
+											chck = chck-1;
 											if(e.getSource() == stones[5]){
 												click[5]= true;
 												
@@ -261,19 +298,39 @@ public class PaGam extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 					if (wei_count < 3 &&  arg0.getSource() == weight){						
 						//2개 체크했을때, 넘기기 위한것
-						if(number[0]*number[1] !=0 ||number[0]*number[2] !=0 ||number[0]*number[3] !=0 ||number[0]*number[4] !=0
-								|| number[0]*number[5] !=0 ||
-								number[1]*number[2] !=0 ||number[1]*number[3] !=0 ||number[1]*number[4] !=0 ||number[1]*number[5] !=0
-								|| number[2]*number[3] !=0|| number[2]*number[4] !=0|| number[2]*number[5] !=0 ||
-								number[3]*number[4] !=0 || number[3]*number[4] !=0 || number[3]*number[5] !=0 ||
-								number[4]*number[5] !=0){
+						if( 1<chck && chck < 3){
 							
 							//무게잰 횟수 증가
 							wei_count++;
 							count1.setText(wei_count+"");
-							System.out.println(wei_count);
 						check1 = new Jcheck(number,chlab2);
+						
 						}
+				}else{
+					//3번이상 누를경우 경고창
+					JFrame overcount = new JFrame();
+					overcount.setTitle("무게재기");
+					overcount.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					overcount.setSize(200,200);
+					overcount.setResizable(false);	
+					overcount.setVisible(true);
+					overcount.setLayout(new GridLayout(0, 1));
+					JPanel countover= new JPanel();
+					JLabel over = new JLabel("숫자 카운터가 초과 되었습니다.");
+					JButton back = new JButton("돌아가기");
+					back.addActionListener(new ActionListener() {
+						
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							if(e.getSource() == back){
+								overcount.dispose();
+							}
+							
+						}
+					});
+					countover.add(over);
+					countover.add(back);
+					overcount.add(countover);
 				}
 				
 			}
@@ -306,51 +363,42 @@ public class PaGam extends JPanel{
 		});
 		
 		
-		//돌아가기 버튼, 누르면 메인Frame으로 돌아간다
-		return1 = new JButton("돌아가기");
-		add(return1);
-		return1.addActionListener(new ActionListener(){
+		//끝내기 버튼, 누르면 메인Frame으로 돌아간다
+		stop = new JButton("그만두기");
+		add(stop);
+		stop.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if (arg0.getSource() == return1){
-					//현재 패널을 감춘다.
-					setVisible(false);
-					//무게 프레임이 떠있을경우 그 창을 닫는다.
-					if(wei_count !=0){
-						check1.dispose();
-					}
-					//이름 입력창을 다시 보이게 한다.
-					main2.setVisible(true);
-					//모든 값을 초기화시킨다.
-					for(int i=0;i<number.length;i++){
-						number[i] = 0;
-						chlab2[i] = null;
-					}
+				if (arg0.getSource() == stop){
+					gmmain.dispose();
 				}
 				
 			}		
 		});
 		
 		//배치관리자
-		names.setBounds(450, 20, 200, 50);
+		names.setBounds(420, 20, 200, 50);
 		rest.setBounds(700, 20, 200, 50);
 		count1.setBounds(115, 330, 150, 50);
 		weight.setBounds(365, 530, 150, 50);
 		dab.setBounds(660, 450, 150, 50);
-		return1.setBounds(660, 530, 150, 50);
-		stones[0].setBounds(100, 200, 15, 15);
-		stones[1].setBounds(200, 200, 15, 15);
-		stones[2].setBounds(300, 200, 15,15);
-		stones[3].setBounds(400, 200, 15, 15);
-		stones[4].setBounds(500, 200, 15, 15);
-		stones[5].setBounds(600, 200, 15, 15);
+		stop.setBounds(660, 530, 150, 50);
 		
-	/*	stoneimg[0].setBounds(100, 100, 60, 60);
-		stoneimg[1].setBounds(200, 100, 60, 60);
-		stoneimg[2].setBounds(300, 100, 60,60);
-		stoneimg[3].setBounds(400, 100, 60, 60);
-		stoneimg[4].setBounds(500, 100, 60, 60);
-		stoneimg[5].setBounds(600, 100, 60, 60);*/
+		int a=0;
+		for(int j =0;j<stones.length;j++){
+			
+			stones[j].setBounds(100+a, 200, 15, 15);
+			a+=130;
+		}
+		a=0;
+
+		
+		for(int i =0;i<stoneimg.length;i++){
+			
+			stoneimg[i].setBounds(40+a, 150, 130, 45);
+			a+=130;
+		}
+
 		}
 
 	//num를 매개변수 num2로 받아서 수를 섞은뒤 그 것을 renum에 저장한다.
